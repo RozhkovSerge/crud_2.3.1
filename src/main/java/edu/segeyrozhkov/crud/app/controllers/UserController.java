@@ -25,14 +25,7 @@ public class UserController {
         return "users";
     }
 
-//    @GetMapping("/{id}/delete")
-//    String deleteUser(@PathVariable("id") int id) {
-//        userService.removeUser(id);
-//        return "redirect:/users";
-//    }
-
     @GetMapping("/{id}/edit")
-        //done
     String editUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("title", "Edit user");
