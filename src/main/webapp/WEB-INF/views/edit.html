@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3 th:text="${title}">Add user</h3>
+<form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
+  <ul class="wrapper">
+    <li class="form-row">
+      <label for="name">Name</label>
+      <input type="text" th:field="*{name}" id="name"/>
+    </li>
+    <br>
+    <li class="form-row">
+      <label for="department">Department</label>
+      <input type="text" th:field="*{department}" id="department"/>
+    </li>
+    <br>
+    <li class="form-row">
+      <label for="salary">Salary</label>
+      <input type="text" th:field="*{salary}" id="salary"/>
+    </li>
+    <br>
+    <input type="submit" value="Submit">
+  </ul>
+</form>
+
+<form th:method = "DELETE" th:action = "@{/users/{id}(id=${user.getId()})}">
+
+  <input type="submit" value="Delete">
+</form>
+</body>
+</html>

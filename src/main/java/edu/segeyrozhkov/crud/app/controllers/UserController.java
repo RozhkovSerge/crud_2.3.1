@@ -25,23 +25,36 @@ public class UserController {
         return "users";
     }
 
-    @GetMapping("/{id}/delete")
-    String deleteUser(@PathVariable("id") int id) {
-        userService.removeUser(id);
-        return "redirect:/users";
-    }
+//    @GetMapping("/{id}/delete")
+//    String deleteUser(@PathVariable("id") int id) {
+//        userService.removeUser(id);
+//        return "redirect:/users";
+//    }
 
-    @GetMapping("/{id}/edit") //done
+    @GetMapping("/{id}/edit")
+        //done
     String editUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
-        model.addAttribute("userList", userService.userList());
         model.addAttribute("title", "Edit user");
-        return "/users";
+        return "/edit";
     }
 
     @PostMapping("/{id}")
+    public String add(@ModelAttribute("user") User user, @PathVariable("id") int id) {
+        userService.add(user);
+        return "redirect:/users";
+    }
+
+    @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
         userService.updateUser(user);
         return "redirect:/users";
     }
+
+    @DeleteMapping("/{id}")
+    public String delete (@PathVariable(name = "id") int id) {
+        userService.removeUser(id);
+        return "redirect:/users";
+    }
+
 }
