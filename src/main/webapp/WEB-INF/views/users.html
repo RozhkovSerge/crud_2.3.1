@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -79,15 +79,15 @@
         <td align="center" th:text="${user.getName()}"></td>
         <td align="center" th:text="${user.getDepartment()}"></td>
         <td align="center" th:text="${user.getSalary()}"></td>
-        <td align="center"><a href="edit_user.html" th:href="@{/edit/{id}(id=${user.getId()})}">Edit</a></td>
-        <td align="center"><a href="remove_user.html" th:href="@{/remove/{id}(id=${user.getId()})}">Remove</a></td>
+        <td align="center"><a th:href="@{users/{id}/edit(id=${user.getId()})}">Edit</a></td>
+        <td align="center"><a th:href="@{users/{id}/delete(id=${user.getId()})}">Remove</a></td>
     </tr>
 </table>
 <br>
 <br>
 
 <h3 th:text="${title}">Add user</h3>
-<form th:method="POST" th:action="@{/user/{id}(id=${user.getId()})}" th:object="${user}">
+<form th:method="POST" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
     <ul class="wrapper">
         <li class="form-row">
             <label for="name">Name</label>
