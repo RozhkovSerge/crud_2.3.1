@@ -20,6 +20,15 @@ public class User {
     @Column(name = "user_salary")
     private double salary;
 
+    public User() {
+    }
+
+    public User(String name, String department, double salary) {
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
+    }
+
     public int getId() {
         return id;
     }
