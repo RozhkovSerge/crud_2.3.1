@@ -31,11 +31,14 @@ import java.util.Properties;
 @EnableWebMvc
 
 public class SpringConfig implements WebMvcConfigurer {
+
     private final ApplicationContext applicationContext;
+    private final Environment env;
 
     @Autowired
-    public SpringConfig(ApplicationContext applicationContext) {
+    public SpringConfig(ApplicationContext applicationContext, Environment env) {
         this.applicationContext = applicationContext;
+        this.env = env;
     }
 
     @Bean
@@ -62,10 +65,6 @@ public class SpringConfig implements WebMvcConfigurer {
         registry.viewResolver(resolver);
     }
 
-    //DataBase Config
-    @Autowired
-    private Environment env;
-
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -76,7 +75,6 @@ public class SpringConfig implements WebMvcConfigurer {
         return dataSource;
     }
 
-    //EntityManagerFactory Bean Config
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();

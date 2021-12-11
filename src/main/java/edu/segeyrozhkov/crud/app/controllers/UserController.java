@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/users")
 public class UserController {
+
     private UserService userService;
 
     @Autowired
@@ -18,30 +19,34 @@ public class UserController {
     }
 
     @GetMapping
-    public String getAllUsers(Model model) { //done
+    public String getAllUsers(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("userList", userService.userList());
         model.addAttribute("title", "Add user");
+
         return "users";
     }
 
-    @GetMapping("/{id}/delete")
+    @GetMapping("/delete/{id}")
     String deleteUser(@PathVariable("id") int id) {
         userService.removeUser(id);
+
         return "redirect:/users";
     }
 
-    @GetMapping("/{id}/edit") //done
+    @GetMapping("/edit/{id}")
     String editUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("userList", userService.userList());
         model.addAttribute("title", "Edit user");
+
         return "/users";
     }
 
     @PostMapping("/{id}")
     public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
         userService.updateUser(user);
+
         return "redirect:/users";
     }
 }

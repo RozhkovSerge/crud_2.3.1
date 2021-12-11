@@ -79,8 +79,8 @@
         <td align="center" th:text="${user.getName()}"></td>
         <td align="center" th:text="${user.getDepartment()}"></td>
         <td align="center" th:text="${user.getSalary()}"></td>
-        <td align="center"><a th:href="@{users/{id}/edit(id=${user.getId()})}">Edit</a></td>
-        <td align="center"><a th:href="@{users/{id}/delete(id=${user.getId()})}">Remove</a></td>
+        <td align="center"><a th:href="@{users/edit/{id}/(id=${user.getId()})}">Edit</a></td>
+        <td align="center"><a th:href="@{users/delete/{id}(id=${user.getId()})}">Remove</a></td>
     </tr>
 </table>
 <br>
