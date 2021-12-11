@@ -21,8 +21,8 @@ public class PopulateDB {
         User user2 = new User("Mary", "Sales", 200);
         User user3 = new User("Mike", "HR", 300);
 
-        userService.updateUser(user1);
-        userService.updateUser(user2);
-        userService.updateUser(user3);
+        userService.createOrUpdateUser(user1);
+        userService.createOrUpdateUser(user2);
+        userService.createOrUpdateUser(user3);
     }
 }
