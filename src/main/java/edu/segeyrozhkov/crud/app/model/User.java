@@ -24,6 +24,15 @@ public class User {
         return id;
     }
 
+    public User() {
+    }
+
+    public User(String name, String department, double salary) {
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
