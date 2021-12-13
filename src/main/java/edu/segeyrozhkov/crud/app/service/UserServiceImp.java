@@ -9,37 +9,37 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImp implements UserService {
 
-    @Autowired
     private UserDao userDao;
 
+    @Autowired
+    public UserServiceImp(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
     @Override
-    @Transactional
     public void add(User user) {
         userDao.add(user);
     }
 
     @Override
-    @Transactional
     public void updateUser(User user) {
         userDao.updateUser(user);
     }
 
     @Override
-    @Transactional
     public void removeUser(int id) {
         userDao.removeUser(id);
     }
 
     @Override
-    @Transactional
     public User getUserById(int id) {
         return userDao.getUserById(id);
     }
 
     @Override
-    @Transactional
     public List<User> userList() {
         return userDao.userList();
     }
